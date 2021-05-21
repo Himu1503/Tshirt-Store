@@ -49,9 +49,10 @@ role:{
 purchases:{
     type: Array,
     default: []
-}
+},
 
-});
+
+},{timestamps:true});
 
 userSchema.virtual("password")
 
@@ -73,7 +74,7 @@ userSchema.method ={
         return this.secureFunction(plainpassword)=== this.encry_password
 
     },
-    
+
     secureFunction: function (plainpassword) {
      if (!password) return ""
      try {
