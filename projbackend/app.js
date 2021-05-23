@@ -1,6 +1,13 @@
 
 require('dotenv').config()
 const mongoose = require('mongoose');
+
+const express = require ("express")
+const app= express()
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
+const cors = require("cors")
+
 mongoose.connect(process.env.DATABASE,
  {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex:true})
  .then(()=> {
@@ -9,9 +16,13 @@ mongoose.connect(process.env.DATABASE,
      console.log("Error Connecting to DB")
  })
 
+ app.use(bodyParser.json())
+ app.use(cookieParser())
+ app.use(cors())
 
-const express = require ("express")
-const app= express()
+
+
+
 
 const port = process.env.PORT || 7000 
 
