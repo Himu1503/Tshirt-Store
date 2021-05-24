@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const { check } = require('express-validator')
-const {signout,signup} = require("../controllers/auth")
+const {signout,signup,signin} = require("../controllers/auth")
 
 //Singup route with check method express validator 
 
@@ -21,3 +21,12 @@ router.get("/signout",signout)
 
 
 module.exports = router;
+
+
+router.post ("/signin" ,
+[
+
+    check ("email").isEmail(),
+    check("passowrd").isLength({min: 3}).withMessage('Password field is required')
+
+],signin )
